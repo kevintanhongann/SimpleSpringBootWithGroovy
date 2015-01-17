@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.0.BUILD-SNAPSHOT")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'groovy'
+
+jar {
+    baseName = 'SimpleSpringBoot'
+    version =  '0.0.1-SNAPSHOT'
+}
+
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+}
+
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.2'
+  distributionUrl = 'http://services.gradle.org/distributions/gradle-2.2-all.zip'
+}
+
+repositories {
+    jcenter()
+}
+
+bootRepackage {
+    mainClass = 'com.simpleproject'
+}
+
+sourceSets {
+    main {
+        groovy.srcDirs = ['src/main/groovy']
+    }
+}
+
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.6'
+    compile("org.springframework.boot:spring-boot-starter-web:1.1.9.RELEASE")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.3-SNAPSHOT"
+    compile 'org.grails:gorm-hibernate4-spring-boot:1.1.0.RELEASE'
+}
