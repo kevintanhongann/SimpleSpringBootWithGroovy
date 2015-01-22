@@ -21,7 +21,7 @@ jar {
 ext {
     //springBootVersion = '1.0.2.RELEASE'
     //grailsVersion = '2.4.0'
-    groovyVersion = '2.3.6'
+    groovyVersion = '2.4.0'
 }
 
 
